@@ -14,8 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - id: lastVersion
-        name: Last Version
-        uses: pozetroninc/github-action-get-latest-release@master
+        uses: pozetroninc/github-action-get-latest-release@v0.4.0
         with:
           repository: jakubenglicky/pokusne-repo
       - name: Echo version
