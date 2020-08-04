@@ -7,10 +7,19 @@ on:
 
 jobs:
   build:
-    name: Run CI Tasks
+    name: Make release
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
-      - uses: actions/checkout@v2
-      - name: Test
-        run: echo ${{github.event.pull_request.body}}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{github.event.pull_request.title}}
+          body: ${{github.event.pull_request.body}}
+          draft: false
+          prerelease: false
