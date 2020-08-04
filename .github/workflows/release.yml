@@ -19,7 +19,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          repository: jakubenglicky/pokusne-repo
+          owner: jakubenglicky
+          repo: pokusne-repo
       - name: Echo version
         run: echo ${{ steps.lastVersion.outputs.release }}
 #      - name: Create Release
