@@ -15,12 +15,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - id: lastVersion
-        uses: pozetroninc/github-action-get-latest-release@v0.4.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: jakubenglicky/github-action-get-latest-release@master
         with:
           owner: jakubenglicky
           repo: pokusne-repo
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Echo version
         run: echo ${{ steps.lastVersion.outputs.release }}
 #      - name: Create Release
