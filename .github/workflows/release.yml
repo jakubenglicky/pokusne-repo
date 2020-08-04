@@ -2,33 +2,31 @@
 name: Release Bot
 
 on:
-#  pull_request:
-#    types: [closed]
-  - push
+  pull_request:
+    types: [closed]
 
 jobs:
   build:
     name: Make release
     runs-on: ubuntu-latest
-#    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - id: lastVersion
+        name: Get last tag
         uses: jakubenglicky/github-action-get-latest-release@master
         with:
           owner: jakubenglicky
           repo: pokusne-repo
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Echo version
-        run: echo ${{ steps.lastVersion.outputs.release }}
-#      - name: Create Release
-#        uses: actions/create-release@v1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          tag_name: ${{ steps.keydb.outputs.release }}
-#          release_name: ${{github.event.pull_request.title}}
-#          body: ${{github.event.pull_request.body}}
-#          draft: false
-#          prerelease: false
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.lastVersion.outputs.release }}
+          release_name: ${{github.event.pull_request.title}}
+          body: ${{github.event.pull_request.body}}
+          draft: false
+          prerelease: false
