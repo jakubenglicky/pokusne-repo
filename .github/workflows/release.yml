@@ -13,13 +13,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - id: lastVersion
+        name: Last Version
+        uses: pozetroninc/github-action-get-latest-release@master
         with:
-          tag_name: testicek
-          release_name: ${{github.event.pull_request.title}}
-          body: ${{github.event.pull_request.body}}
-          draft: false
-          prerelease: false
+          repository: jakubenglicky/pokusne-repo
+      - name: Echo version
+        run: echo ${{ steps.lastVersion.outputs.release }}
+#      - name: Create Release
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          tag_name: ${{ steps.keydb.outputs.release }}
+#          release_name: ${{github.event.pull_request.title}}
+#          body: ${{github.event.pull_request.body}}
+#          draft: false
+#          prerelease: false
