@@ -9,6 +9,7 @@ jobs:
   build:
     name: Run CI Tasks
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v2
       - name: Test
