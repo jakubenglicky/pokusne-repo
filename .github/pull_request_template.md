@@ -1,8 +1,8 @@
-##### Autor: %author%
+##### Autor: %AUTHOR%
 
 ##### Issue: #1234
 
-##### Základový PR: %id%
+##### Základový PR: %ID%
 
 ##### Projektový PR: #peckadesign/project4567
 
