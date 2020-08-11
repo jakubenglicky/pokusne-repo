@@ -8,7 +8,7 @@
 
 ***
 
-Popíšu co jsem zapracoval, na co je si potřeba dát pozor. Tento text by měl být přípravou toho co bude v release. Více info ve [wiki](https://github.com/peckadesign/pdproject5/wiki/Jak-na-PR)
+Popíšco jsem zapracoval, na co je si potřeba dát pozor. Tento text by měl být přípravou toho co bude v release. Více info ve [wiki](https://github.com/peckadesign/pdproject5/wiki/Jak-na-PR)
 
 ***
 
