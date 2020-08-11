@@ -1,14 +1,10 @@
-##### Autor: %AUTHOR%
 
 ##### Issue: #1234
-
-##### Základový PR: %ID%
 
 ##### Projektový PR: #peckadesign/project4567
 
 ***
-
-Popíšco jsemTento text by měl býho co bude v release. Více info ve [wiki](https://github.com/peckadesign/pdproject5/wiki/Jak-na-PR)
+ho co bude v release. Více info ve [wiki](https://github.com/peckadesign/pdproject5/wiki/Jak-na-PR)
 
 ***
 
