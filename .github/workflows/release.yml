@@ -21,10 +21,12 @@ jobs:
           repo: pokusne-repo
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
-        uses: actions/create-release@v1
+        uses: jakubenglicky/create-release@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          prNumber: ${{github.event.pull_request.number}}
+          author: ${{github.event.pull_request.user.login}}
           tag_name: ${{ steps.lastVersion.outputs.release }}
           release_name: ${{github.event.pull_request.title}}
           body: ${{github.event.pull_request.body}}
