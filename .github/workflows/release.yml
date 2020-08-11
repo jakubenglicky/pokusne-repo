@@ -21,7 +21,7 @@ jobs:
           repo: pokusne-repo
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
-        uses: jakubenglicky/create-release@master
+        uses: jakubenglicky/create-release@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
