@@ -32,8 +32,15 @@ jobs:
           body: ${{github.event.pull_request.body}}
           draft: false
           prerelease: false
-      - name: Label
+      - name: Done Label
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.github_token }}
           labels: "S6: Hotovo"
+      - name: Comment with PR link
+        uses: mshick/add-pr-comment@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: |
+            https://github.com/peckadesign/pdproject5/releases/tag/${{ steps.lastVersion.outputs.release }}
