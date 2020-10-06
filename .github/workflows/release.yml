@@ -32,12 +32,17 @@ jobs:
           body: ${{github.event.pull_request.body}}
           draft: false
           prerelease: false
+      - name: Remove merge label
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          labels: "S5: Čeká na merge"
       - name: Done Label
         uses: actions-ecosystem/action-add-labels@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           labels: "S6: Hotovo"
-      - name: Comment with PR link
+      - name: Add comment with release link to merged PR
         uses: mshick/add-pr-comment@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
