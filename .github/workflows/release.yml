@@ -34,6 +34,6 @@ jobs:
           prerelease: false
       - name: Label
         uses: actions-ecosystem/action-add-labels@v1
-          with:
-            github_token: ${{ secrets.github_token }}
-            labels: bug
+        with:
+          github_token: ${{ secrets.github_token }}
+          labels: bug
