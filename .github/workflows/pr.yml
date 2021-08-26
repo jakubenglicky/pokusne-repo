@@ -1,0 +1,16 @@
+name: PR Bot
+
+on:
+  push:
+    branches:
+      - pdp-*
+
+jobs:
+  pr:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Create PR
+          uses: peter-evans/create-pull-request@v3
+          with:
+            labels: |
+              Základový PR
