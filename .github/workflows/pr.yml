@@ -2,17 +2,13 @@ name: PR Bot
 
 on:
   push:
-    branches:
-      - pdp-*
 
 jobs:
   pr:
       name: PRs
-      runs-on: ubuntu-latest
+      runs-on: [self-hosted, k8s]
       steps:
         - uses: actions/checkout@v2
         - name: Create Pull Request
-          uses: peter-evans/create-pull-request@v3
-          with:
-            labels: |
-              Základový PR
+          run: sleep 1000
+
