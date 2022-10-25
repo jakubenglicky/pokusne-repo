@@ -32,3 +32,16 @@ jobs:
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
             SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK  
+
+        - name: Send custom JSON data to Slack workflow
+          id: slack-error
+          uses: slackapi/slack-github-action@v1.23.0
+          with:
+            # For posting a rich message using Block Kit
+            payload: |
+              {
+                "text": ":x: Při deployi <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> nastala chyba :exclamation:"
+              }
+          env:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+            SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK  
