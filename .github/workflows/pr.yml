@@ -14,7 +14,7 @@ jobs:
             # For posting a rich message using Block Kit
             payload: |
               {
-                "text": "Deploy <https://github.com/${{ env.GITHUB_REPOSITORY }}/releases/tag/v22.10.25.1|v22.10.25.1> byl zahájen :crossed_fingers:"
+                "text": "Deploy <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> byl zahájen :crossed_fingers:"
               }
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
