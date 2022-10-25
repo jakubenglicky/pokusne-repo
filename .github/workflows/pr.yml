@@ -27,7 +27,7 @@ jobs:
             # For posting a rich message using Block Kit
             payload: |
               {
-                "text": "Deploy <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> byl úspěšně dokončen :white_check_mark:"
+                "text": "Deploy <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> byl úspěšně dokončen :white_check_mark: https::/englicky.dev"
               }
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -40,7 +40,7 @@ jobs:
             # For posting a rich message using Block Kit
             payload: |
               {
-                "text": ":x: Při deployi <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> nastala chyba :exclamation:"
+                "text": ":exclamation: Při deployi <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> nastala chyba. Release nebyl nasazen. :exclamation:"
               }
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
