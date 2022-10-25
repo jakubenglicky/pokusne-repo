@@ -8,7 +8,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: repo
-          run: echo ${{ github.event.repository.organization }}
+          run: echo ${{ env.GITHUB_REPOSITORY }}
 
         - name: Send custom JSON data to Slack workflow
           id: slack
