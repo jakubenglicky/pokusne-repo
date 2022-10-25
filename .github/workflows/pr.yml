@@ -14,14 +14,11 @@ jobs:
             # For posting a rich message using Block Kit
             payload: |
               {
-                "text": "Deploy <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> byl zahájen :crossed_fingers:"
+                "text": "Build :construction_worker: <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> byl zahájen :crossed_fingers:"
               }
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
             SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK  
-
-        - name: Sleep
-          run: sleep 30
           
         - name: Send custom JSON data to Slack workflow
           id: slack-final
@@ -30,7 +27,7 @@ jobs:
             # For posting a rich message using Block Kit
             payload: |
               {
-                "text": "Deploy <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> byl úspěšně dokončen :white_check_mark: https://englicky.dev :link:"
+                "text": "Build :construction_worker: <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> byl úspěšně dokončen :white_check_mark: https://englicky.dev :link:"
               }
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -43,7 +40,7 @@ jobs:
             # For posting a rich message using Block Kit
             payload: |
               {
-                "text": ":exclamation: Při deployi <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> nastala chyba. Release nebyl nasazen. :exclamation:"
+                "text": ":exclamation: Při buildu :construction_worker: <${{ github.event.repository.html_url }}/releases/tag/v22.10.25.1|v22.10.25.1> nastala chyba. Release nebude nasazen. :exclamation:"
               }
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
