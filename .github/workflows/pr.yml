@@ -7,6 +7,9 @@ jobs:
   pr:
       runs-on: ubuntu-latest
       steps:
+        - name: repo
+          run: echo ${{ github.event.repository.name }}
+
         - name: Send custom JSON data to Slack workflow
           id: slack
           uses: slackapi/slack-github-action@v1.23.0
@@ -14,7 +17,7 @@ jobs:
             # For posting a rich message using Block Kit
             payload: |
               {
-                "text": "Deploy v22.10.25.1 byl zahájen :cross-fingers:"
+                "text": "Deploy <http://www.example.com|v22.10.25.1> byl zahájen :crossed-fingers:"
               }
           env:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
