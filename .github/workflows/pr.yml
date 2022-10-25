@@ -20,6 +20,9 @@ jobs:
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
             SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK  
 
+        - name: Sleep
+          run: sleep 30
+          
         - name: Send custom JSON data to Slack workflow
           id: slack-final
           uses: slackapi/slack-github-action@v1.23.0
