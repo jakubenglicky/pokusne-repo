@@ -21,7 +21,7 @@ jobs:
             SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK  
 
         - name: Send custom JSON data to Slack workflow
-          id: slack
+          id: slack-final
           uses: slackapi/slack-github-action@v1.23.0
           with:
             # For posting a rich message using Block Kit
