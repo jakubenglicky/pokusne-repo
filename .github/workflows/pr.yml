@@ -12,4 +12,4 @@ jobs:
           with:
             fetch-depth: 0
 
-        - run: git tag
+        - run: git log v22.11.09.4..v22.11.09.5 --oneline --format=%s
