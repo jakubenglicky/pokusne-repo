@@ -30,7 +30,6 @@ jobs:
       - name: Set output variables
         id: vars
         run: |
-          git fetch
           changes="$(git log v22.11.09.6..v22.11.09.7 --oneline --format=%s)"
           echo "changes=$changes" >> $GITHUB_OUTPUT
 
