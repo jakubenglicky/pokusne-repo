@@ -2,9 +2,9 @@
 name: Release Bot
 
 on:
-  pull_request:
-    types: [closed]
-
+  release:
+    types:
+      - released
 jobs:
   build:
     name: Make release
