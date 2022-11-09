@@ -18,7 +18,7 @@ jobs:
       #   run: echo "{tag}={$(git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`)}" >> $PREVIOUS_TAG
 
       - name: Previous Tag
-        run: echo "tag=v22.11.09.8" >> $PREVIOUS_TAG
+        run: echo "tag=v22.11.09.8" >> $GITHUB_TAG
 
 
       - name: Get Git Log
