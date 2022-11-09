@@ -31,7 +31,7 @@ jobs:
         id: vars
         run: |
           git fetch
-          changes="$(git log v22.11.09.4..v22.11.09.5 --oneline --format=%s)"
+          changes="$(git log v22.11.09.6..v22.11.09.7 --oneline --format=%s)"
           echo "changes=$changes" >> $GITHUB_OUTPUT
 
       - name: Send custom JSON data to Slack workflow
