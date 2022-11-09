@@ -14,12 +14,14 @@ jobs:
         uses: actions/checkout@v2
         with:
             fetch-depth: 0
+      - name: Previous Tag
+        run: echo "{tag}={$(git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`)}" >> $PREVIOUS_TAG
 
       - name: Get Git Log
         id: git_log
         uses: JantHsueh/get-git-log-action@master
         with:
-          tag: $(git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`)
+          tag: ${{ env.PREVIOUS_TAG }}
 
       - run: echo ${{ steps.git_log.outputs.log }}
 
