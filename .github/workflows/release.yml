@@ -27,6 +27,8 @@ jobs:
           repo: pokusne-repo
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - run: echo ${{ steps.previoustag.outputs.tag }}
+      
       - name: Set output variables
         id: vars
         run: |
