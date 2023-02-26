@@ -16,3 +16,5 @@ jobs:
         id: git_log
         uses: JantHsueh/get-git-log-action@master
    
+      - name: echo
+        run: git_log.output.log
