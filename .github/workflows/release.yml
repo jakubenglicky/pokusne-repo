@@ -14,10 +14,7 @@ jobs:
 
       - name: Get tag names
         run: |
-          PREVIOUS_TAG=$(git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`)
-          LATEST_TAG=$(git describe --abbrev=0 --tags `git rev-list --tags --skip=0 --max-count=1`)
-      - name: echo
-        run:
-          echo "$PREVIOUS_TAG"
-          echo "$LATEST_TAG"
+          echo $(git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`)
+          echo $(git describe --abbrev=0 --tags `git rev-list --tags --skip=0 --max-count=1`)
+
  
