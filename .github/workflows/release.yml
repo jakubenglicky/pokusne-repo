@@ -16,16 +16,8 @@ jobs:
         run: |
           PREVIOUS_TAG=$(git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`)
           LATEST_TAG=$(git describe --abbrev=0 --tags `git rev-list --tags --skip=0 --max-count=1`)
-
-      - name: Send message to Slack
-        uses: 8398a7/action-slack@v3
-        with:
-          status: 'Success'
-          fields: |
-            {
-              "Latest tag": "$LATEST_TAG",
-              "Previous tag": "$PREVIOUS_TAG",
-              "Commits": "$(git log $PREVIOUS_TAG..$LATEST_TAG --pretty=format:'%h %s (%an)')"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: echo
+        run:
+          echo "$PREVIOUS_TAG"
+          echo "$LATEST_TAG"
+ 
