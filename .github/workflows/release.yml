@@ -1,4 +1,4 @@
-name: Slack Notification
+name: Print Git log between tags
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "v*"
 
 jobs:
-  notify:
+  print-log:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -14,7 +14,10 @@ jobs:
 
       - name: Get tag names
         run: |
-          echo $(git describe --abbrev=0 --tags `git rev-list --tags --skip=2 --max-count=1`)
-          echo $(git describe --abbrev=0 --tags `git rev-list --tags --skip=0 --max-count=1`)
+          git fetch --tags
+          LATEST_TAG=$(git describe --abbrev=0)
+          PREVIOUS_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
 
- 
+      - name: Print log
+        run: |
+          git log $PREVIOUS_TAG..$LATEST_TAG --pretty=format:'%h %s - %an'
