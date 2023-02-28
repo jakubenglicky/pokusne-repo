@@ -18,12 +18,17 @@ jobs:
           echo "PREVIOUS_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))" >> $GITHUB_OUTPUT
           echo "LATEST_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_OUTPUT
 
+      - name: Git log
+        id: gitlog
+        run: |
+          echo "LOG=$(git log ${{ steps.tag_names.outputs.PREVIOUS_TAG }}..${{ steps.tag_names.outputs.LATEST_TAG }} --pretty=format:'%s - %an')" >> $GITHUB_OUTPUT
+
       - name: Slack Notify - start build
         uses: slackapi/slack-github-action@v1.23.0
         with:
           payload: |
             {
-              "text": "$(git log ${{ steps.tag_names.outputs.PREVIOUS_TAG }}..${{ steps.tag_names.outputs.LATEST_TAG }} --pretty=format:'%s - %an')"
+              "text": "${{ steps.gitlog.outputs.LOG }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
