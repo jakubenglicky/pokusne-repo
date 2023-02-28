@@ -26,7 +26,7 @@ jobs:
       - name: Get tag names
         id: tag_names
         run: |
-          echo "{pokus}={haha}" >> $GITHUB_OUTPUT
+          echo "pokus=haha" >> $GITHUB_OUTPUT
 
       - name: Print log
         run: |
