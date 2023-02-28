@@ -12,22 +12,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      # - name: Get tag names
-      #   id: tag_names
-      #   run: |
-      #     echo "{PREVIOUS_TAG}={$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))}" >> $GITHUB_OUTPUT
-      #     echo "{LATEST_TAG}={$(git describe --abbrev=0 --tags)}" >> $GITHUB_OUTPUT
-
-      # - name: Print log
-      #   run: |
-      #     echo ${{ steps.tag_names.outputs.PREVIOUS_TAG }}
-      #     echo ${{ steps.tag_names.outputs.LATEST_TAG }}
-
       - name: Get tag names
         id: tag_names
         run: |
-          echo "pokus=haha" >> $GITHUB_OUTPUT
+          echo "PREVIOUS_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))" >> $GITHUB_OUTPUT
+          echo "LATEST_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_OUTPUT
 
       - name: Print log
         run: |
-          echo ${{ steps.tag_names.outputs.pokus }}
+          echo ${{ steps.tag_names.outputs.PREVIOUS_TAG }}
+          echo ${{ steps.tag_names.outputs.LATEST_TAG }}
