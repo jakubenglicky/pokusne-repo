@@ -19,5 +19,9 @@ jobs:
           echo "LATEST_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_OUTPUT
 
       - name: Print log
+        id: git_log
         run: |
-          git log ${{ steps.tag_names.outputs.PREVIOUS_TAG }}..${{ steps.tag_names.outputs.LATEST_TAG }} --pretty=format:'%h %s - %an'
+          echo "RESULT=$(git log ${{ steps.tag_names.outputs.PREVIOUS_TAG }}..${{ steps.tag_names.outputs.LATEST_TAG }} --pretty=format:'%s - %an')" >> $GITHUB_OUTPUT
+
+      - name: Print log
+        run: echo ${{ steps.git_log.outputs.RESULT }}
