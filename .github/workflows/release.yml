@@ -2,7 +2,8 @@ name: Slack Notification
 
 on:
   push:
-
+    tags:
+      - "v*"
 jobs:
   notify:
     runs-on: ubuntu-latest
