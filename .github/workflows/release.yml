@@ -2,8 +2,7 @@ name: Slack Notification
 
 on:
   push:
-    tags:
-      - "v*"
+
 jobs:
   notify:
     runs-on: ubuntu-latest
@@ -17,6 +16,8 @@ jobs:
         run: |
           PREVIOUS_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
           LATEST_TAG=$(git describe --abbrev=0 --tags)
-          
-          echo "$PREVIOUS_TAG"
-          echo "$LATEST_TAG"
+
+      - name: Print log
+        run: |
+          git log $PREVIOUS_TAG..$LATEST_TAG --pretty=format:'%h %s - %an'
+
