@@ -23,4 +23,4 @@ jobs:
 
       - name: Slack Notify
         run: |
-          bash slack.sh $SLACK_WEBHOOK_URL
+          bash slack.sh ${{ secrets.SLACK_WEBHOOK_URL }}
