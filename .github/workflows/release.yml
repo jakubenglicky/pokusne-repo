@@ -23,13 +23,5 @@ jobs:
         run: |
           echo "LOG=$(git log ${{ steps.tag_names.outputs.PREVIOUS_TAG }}..${{ steps.tag_names.outputs.LATEST_TAG }} --pretty=format:'%s - %an')" >> $GITHUB_OUTPUT
 
-      - name: Slack Notify - start build
-        uses: slackapi/slack-github-action@v1.23.0
-        with:
-          payload: |
-            {
-              "text": "${{ steps.gitlog.outputs.LOG }}"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+      - name: View payload
+        run: echo ${{ steps.gitlog.outputs.LOG }}
