@@ -15,13 +15,9 @@ jobs:
       - name: Get tag names
         id: tag_names
         run: |
-          echo "PREVIOUS_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))" >> $GITHUB_OUTPUT
-          echo "LATEST_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_OUTPUT
-
-      - name: Git log
-        id: gitlog
-        run: echo "$(git log ${{ steps.tag_names.outputs.PREVIOUS_TAG }}..${{ steps.tag_names.outputs.LATEST_TAG }} --pretty=format:'%an:%s')" >> git.log
+          LATEST_TAG=$(git describe --abbrev=0 --tags)
+          PREVIOUS_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
+          echo "$(git log --pretty=format:'%an: %s' $PREVIOUS_TAG...$LATEST_TAG)" >> git.log
 
       - name: View payload
         run: cat git.log
-
