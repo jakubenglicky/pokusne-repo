@@ -20,8 +20,8 @@ jobs:
 
       - name: Git log
         id: gitlog
-        run: |
-          echo "LOG=$(git log ${{ steps.tag_names.outputs.PREVIOUS_TAG }}..${{ steps.tag_names.outputs.LATEST_TAG }} --pretty=format:'%s - %an')" >> $GITHUB_OUTPUT
+        run: echo "$(git log ${{ steps.tag_names.outputs.PREVIOUS_TAG }}..${{ steps.tag_names.outputs.LATEST_TAG }} --pretty=format:'%an:%s')" >> git.log
 
       - name: View payload
-        run: echo ${{ steps.gitlog.outputs.LOG }}
+        run: cat git.log
+
