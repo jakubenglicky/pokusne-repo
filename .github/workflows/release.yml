@@ -13,10 +13,4 @@ jobs:
           fetch-depth: 0
 
       - name: Slack Notify - changes
-        run: |
-          LATEST_TAG=$(git describe --abbrev=0 --tags)
-          PREVIOUS_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
-          echo $LATEST_TAG
-          echo $PREVIOUS_TAG
-          echo "$(git log --pretty=format:'%an: %s' --reverse $PREVIOUS_TAG...$LATEST_TAG)" >> git.log
-          bash slack.sh ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: bash slack.sh ${{ secrets.SLACK_WEBHOOK_URL }}
