@@ -6,9 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 webhook_url=$1
-latest_tag=$(git describe --abbrev=0 --tags)
-previous_tag=$(git describe --abbrev=0 --tags "$latest_tag^")
-log=$(git log "$previous_tag..$latest_tag" --pretty=format:'%an: %s')
+log=$(cat git.log)
 
 payload=$(cat <<EOF
 {
