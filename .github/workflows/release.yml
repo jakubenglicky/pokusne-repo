@@ -18,3 +18,9 @@ jobs:
         id: octokit
 
       - run: echo "Octokit is at version ${{ steps.octokit.outputs.tag }}"
+
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      
+      - run: echo ${{ steps.previoustag.outputs.tag }}
