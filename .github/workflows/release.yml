@@ -10,13 +10,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - uses: oprypin/find-latest-tag@v1
         with:
-          repository: ${{ github.repository }}  # The repository to scan.
-          releases-only: true  # We know that all relevant tags have a GitHub release for them.
-        id: octokit  # The step ID to refer to later.
+          repository: ${{ github.repository }}
+          releases-only: true
+        id: octokit
 
       - run: echo "Octokit is at version ${{ steps.octokit.outputs.tag }}"
