@@ -1,7 +1,8 @@
 name: Slack Notification
 
 on:
-  push:
+  release:
+
 
 jobs:
   notify:
@@ -12,5 +13,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Slack Notify - changes
-        run: bash slack.sh ${{ secrets.SLACK_WEBHOOK_URL }}
+      - uses: oprypin/find-latest-tag@v1
+        with:
+          repository: ${{ github.repository }}  # The repository to scan.
+          releases-only: true  # We know that all relevant tags have a GitHub release for them.
+        id: octokit  # The step ID to refer to later.
+
+      - run: echo "Octokit is at version ${{ steps.octokit.outputs.tag }}"
